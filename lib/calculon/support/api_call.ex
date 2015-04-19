@@ -1,0 +1,34 @@
+# lib/calculon/support/api_call.ex
+defmodule Calculon.Support.APICall do
+  use HTTPoison.Base
+
+  # prepend the url with the testing server api route
+  def process_url(url) do
+    api_url <> url
+  end
+
+  # try to decode response bodies as JSON
+  #   but reply with the raw body if there are
+  #   any errors (e.g., invalid JSON)
+  def process_response_body(body) do
+    try do
+      Poison.decode!(body)
+    rescue
+      _ -> body
+    end
+  end
+
+  # always convert the request body to JSON
+  def process_request_body(body) do
+    Poison.encode!(body)
+  end
+
+  # API url helper - will work in any env
+  defp api_url do
+    endpoint_config = Application.get_env(:calculon, Calculon.Endpoint)
+    host = Keyword.get(endpoint_config, :url) |> Keyword.get(:host)
+    port = Keyword.get(endpoint_config, :http) |> Keyword.get(:port)
+
+    "http://#{host}:#{port}/api/v1"
+  end
+end
