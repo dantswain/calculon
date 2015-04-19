@@ -19,7 +19,9 @@ defmodule Calculon.Router do
   end
 
   # Other scopes may use custom stacks.
-  # scope "/api", Calculon do
-  #   pipe_through :api
-  # end
+  scope "/api/v1", Calculon do
+    pipe_through :api
+
+    post "/calculate", CalculateController, :create
+  end
 end
