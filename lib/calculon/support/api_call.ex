@@ -12,7 +12,7 @@ defmodule Calculon.Support.APICall do
   #   any errors (e.g., invalid JSON)
   def process_response_body(body) do
     try do
-      Poison.decode!(body)
+      Poison.decode!(body, keys: :atoms!)
     rescue
       _ -> body
     end
@@ -21,6 +21,11 @@ defmodule Calculon.Support.APICall do
   # always convert the request body to JSON
   def process_request_body(body) do
     Poison.encode!(body)
+  end
+
+  # make sure we're posting JSON
+  defp process_request_headers(headers) do
+    [{'content-type', 'application/json'} | headers]
   end
 
   # API url helper - will work in any env
