@@ -1,8 +1,11 @@
 # Calculon
 
-To start your new Phoenix application:
+Simple example of integration testing a Phoenix app.  Goes with blog
+post [Integration Testing a JSON API in
+Phoenix](http://www.dantswain.com/blog/2015/04/19/integration-testing-a-json-api-in-phoenix/).
 
-1. Install dependencies with `mix deps.get`
-2. Start Phoenix endpoint with `mix phoenix.server`
-
-Now you can visit `localhost:4000` from your browser.
+```
+mix deps.get
+mix deps.compile
+mix test
+```
