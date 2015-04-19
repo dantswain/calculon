@@ -1,4 +1,4 @@
-defmodule Calculon.CalculateController do
+defmodule Calculon.CalculationsController do
   use Phoenix.Controller
 
   plug :action

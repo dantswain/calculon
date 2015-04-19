@@ -22,6 +22,6 @@ defmodule Calculon.Router do
   scope "/api/v1", Calculon do
     pipe_through :api
 
-    post "/calculate", CalculateController, :create
+    post "/calculations", CalculationsController, :create
   end
 end
