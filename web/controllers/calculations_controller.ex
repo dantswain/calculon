@@ -2,8 +2,6 @@
 defmodule Calculon.CalculationsController do
   use Phoenix.Controller
 
-  plug :action
-
   def create(conn, params) do
     input = params["calculation"]["input"]
     output = Calculon.Calculator.eval(input)

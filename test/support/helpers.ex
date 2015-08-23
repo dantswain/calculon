@@ -1,6 +1,8 @@
 # test/support/helpers.ex
 defmodule Calculon.Support.Helpers do
   def launch_api do
+    HTTPoison.start
+    
     # set up config for serving
     endpoint_config =
       Application.get_env(:calculon, Calculon.Endpoint)
