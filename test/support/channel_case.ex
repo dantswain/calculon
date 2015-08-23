@@ -1,9 +1,9 @@
-defmodule Calculon.ConnCase do
+defmodule Calculon.ChannelCase do
   @moduledoc """
   This module defines the test case to be used by
-  tests that require setting up a connection.
+  channel tests.
 
-  Such tests rely on `Phoenix.ConnTest` and also
+  Such tests rely on `Phoenix.ChannelTest` and also
   imports other functionality to make it easier
   to build and query models.
 
@@ -17,10 +17,9 @@ defmodule Calculon.ConnCase do
 
   using do
     quote do
-      # Import conveniences for testing with connections
-      use Phoenix.ConnTest
+      # Import conveniences for testing with channels
+      use Phoenix.ChannelTest
 
-      import Calculon.Router.Helpers
 
       # The default endpoint for testing
       @endpoint Calculon.Endpoint

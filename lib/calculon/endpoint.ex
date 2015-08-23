@@ -1,18 +1,25 @@
 defmodule Calculon.Endpoint do
   use Phoenix.Endpoint, otp_app: :calculon
 
-  # Serve at "/" the given assets from "priv/static" directory
+  socket "/socket", Calculon.UserSocket
+
+  # Serve at "/" the static files from "priv/static" directory.
+  #
+  # You should set gzip to true if you are running phoenix.digest
+  # when deploying your static files in production.
   plug Plug.Static,
-    at: "/", from: :calculon,
-    only: ~w(css images js favicon.ico robots.txt)
+    at: "/", from: :calculon, gzip: false,
+    only: ~w(css fonts images js favicon.ico robots.txt)
 
   # Code reloading can be explicitly enabled under the
   # :code_reloader configuration of your endpoint.
   if code_reloading? do
+    socket "/phoenix/live_reload/socket", Phoenix.LiveReloader.Socket
     plug Phoenix.LiveReloader
     plug Phoenix.CodeReloader
   end
 
+  plug Plug.RequestId
   plug Plug.Logger
 
   plug Plug.Parsers,
@@ -26,8 +33,7 @@ defmodule Calculon.Endpoint do
   plug Plug.Session,
     store: :cookie,
     key: "_calculon_key",
-    signing_salt: "J1Ezx7d7",
-    encryption_salt: "Xtz7kM4h"
+    signing_salt: "ONj/qqm3"
 
-  plug :router, Calculon.Router
+  plug Calculon.Router
 end

@@ -9,8 +9,6 @@ defmodule Calculon do
     children = [
       # Start the endpoint when the application starts
       supervisor(Calculon.Endpoint, []),
-      # Start the Ecto repository
-      worker(Calculon.Repo, []),
       # Here you could define other workers and supervisors as children
       # worker(Calculon.Worker, [arg1, arg2, arg3]),
     ]

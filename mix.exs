@@ -17,7 +17,7 @@ defmodule Calculon.Mixfile do
   # Type `mix help compile.app` for more information
   def application do
     [mod: {Calculon, []},
-     applications: [:phoenix, :cowboy, :logger, :ecto, :httpoison]]
+     applications: [:phoenix, :phoenix_html, :cowboy, :logger]]
   end
 
   # Specifies which paths to compile per environment
@@ -28,10 +28,9 @@ defmodule Calculon.Mixfile do
   #
   # Type `mix help deps` for examples and options
   defp deps do
-    [{:phoenix, "~> 0.11"},
-     {:phoenix_ecto, "~> 0.3"},
-     {:postgrex, ">= 0.0.0"},
-     {:phoenix_live_reload, "~> 0.3"},
+    [{:phoenix, "~> 0.17"},
+     {:phoenix_html, "~> 2.1"},
+     {:phoenix_live_reload, "~> 1.0", only: :dev},
      {:cowboy, "~> 1.0"},
      {:httpoison, "~> 0.6"}]
   end

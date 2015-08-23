@@ -8,9 +8,9 @@ use Mix.Config
 # Configures the endpoint
 config :calculon, Calculon.Endpoint,
   url: [host: "localhost"],
-  root: Path.expand("..", __DIR__),
-  secret_key_base: "FNw05urJB0xKqKNXDz7nuSAiOR3I4J3rNYKASaFcFI9STuRpah+/x/oKYmlqeu3E",
-  debug_errors: false,
+  root: Path.dirname(__DIR__),
+  secret_key_base: "le4EpJ4FJngyueNWKcLdKI+bff40y5HFcuwYJZZOuVKgoXxddv6Xyiz883pLiEan",
+  render_errors: [accepts: ~w(html json)],
   pubsub: [name: Calculon.PubSub,
            adapter: Phoenix.PubSub.PG2]
 

@@ -9,11 +9,5 @@ config :calculon, Calculon.Endpoint,
 # Print only warnings and errors during test
 config :logger, level: :warn
 
-# Configure your database
-config :calculon, Calculon.Repo,
-  adapter: Ecto.Adapters.Postgres,
-  username: "postgres",
-  password: "postgres",
-  database: "calculon_test",
-  size: 1,
-  max_overflow: false
+# Set a higher stacktrace during test
+config :phoenix, :stacktrace_depth, 20
